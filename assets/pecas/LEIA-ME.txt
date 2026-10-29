@@ -1,0 +1,6 @@
+FOTOS DAS PEÇAS
+===============
+As 6 fotos são de demonstração. Para trocar, substitua o arquivo
+mantendo exatamente o mesmo nome (4:3, JPG, 800x600 ou maior).
+Se as peças forem outras, edite a lista "pecas" no topo de assets/js/main.js.
+Se uma foto faltar, o card vira um bloco tipográfico — nada quebra.

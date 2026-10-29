@@ -1,0 +1,38 @@
+CLÁUDIO AUTO PEÇAS — Landing page
+Av. Brasil, 1995 — Jardim Bela Daria, Presidente Prudente/SP
+================================================================
+
+COMO PUBLICAR
+-------------
+Conecte este repositório na Vercel (Framework: Other, sem build).
+HTML, CSS e JavaScript puro. As três fontes vêm dentro do projeto.
+
+   index.html        o site
+   pagamento.html    o checkout (só o dono usa)
+   assets/css/       o visual
+   assets/js/        o carrossel, o menu e o resto
+   assets/fonts/     as três fontes
+   assets/img/       hero (computador e celular), selo, fachada, capa, ícones
+   assets/pecas/     as 6 fotos do carrossel
+
+O QUE EDITAR NO DIA A DIA
+-------------------------
+Topo do assets/js/main.js, bloco CONFIG: whatsapp, msgPadrao, pecas,
+categorias e loadMsgs. Trocar o número ali atualiza todos os links.
+
+O HERO
+------
+No computador o selo fica à direita da arte e a copy ocupa só o lado
+vazio da esquerda. No celular o selo fica em cima e a copy começa logo
+abaixo dele. Para trocar a arte, mantenha o selo no mesmo lugar.
+
+ANTES DE MOSTRAR AO CLIENTE
+---------------------------
+[ ] WHATSAPP — está no fixo (18) 3222-6229. Só funciona se a loja usar
+    WhatsApp Business nesse número. Se tiver celular, troque no CONFIG.
+[ ] HORÁRIO — está "Horário a confirmar" na seção Onde Estamos.
+[ ] FOTOS DAS PEÇAS — as 6 de assets/pecas/ são de demonstração.
+    Troque mantendo os mesmos nomes de arquivo.
+[ ] NOTA DO GOOGLE — 4,6 com 296 avaliações (out/2026). Atualize se mudar.
+[ ] DOMÍNIO — aponta para claudio-autopecas.vercel.app. Ao ligar um
+    domínio próprio, troque esse endereço no index.html e no pagamento.html.
