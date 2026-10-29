@@ -12,8 +12,7 @@
   const CONFIG = {
 
     // WhatsApp: 55 + DDD + número, só dígitos.
-    // Hoje é o fixo da loja, (18) 3222-6229 — funciona se ele tiver WhatsApp Business.
-    whatsapp: '551832226229',
+    whatsapp: '5511953673283',
 
     // Mensagem que já vai escrita quando o cliente abre a conversa.
     msgPadrao: 'Olá, Cláudio Auto Peças! Estou procurando uma peça. Meu carro é: ',

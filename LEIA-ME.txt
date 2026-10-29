@@ -28,8 +28,6 @@ abaixo dele. Para trocar a arte, mantenha o selo no mesmo lugar.
 
 ANTES DE MOSTRAR AO CLIENTE
 ---------------------------
-[ ] WHATSAPP — está no fixo (18) 3222-6229. Só funciona se a loja usar
-    WhatsApp Business nesse número. Se tiver celular, troque no CONFIG.
 [ ] FOTOS DAS PEÇAS — as 6 de assets/pecas/ são de demonstração.
     Troque mantendo os mesmos nomes de arquivo.
 [ ] NOTA DO GOOGLE — 4,6 com 296 avaliações (out/2026). Atualize se mudar.
