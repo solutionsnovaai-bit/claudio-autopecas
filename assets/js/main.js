@@ -12,7 +12,7 @@
   const CONFIG = {
 
     // WhatsApp: 55 + DDD + número, só dígitos.
-    whatsapp: '5511953673283',
+    whatsapp: '5511956513806',
 
     // Mensagem que já vai escrita quando o cliente abre a conversa.
     msgPadrao: 'Olá, Cláudio Auto Peças! Estou procurando uma peça. Meu carro é: ',
