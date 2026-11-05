@@ -3499,9 +3499,10 @@ window.qrcode = module.exports || window.qrcode;})();
       $('testarLink').hidden = false;
       $('testarLink').onclick = function(){ window.open(link,'_blank'); };
 
-      const kb = Math.round(link.length/1024);
-      $('tamLink').textContent = 'Link de ' + (ultimoBoleto ? 'boleto' : 'Pix') + ' com ' + kb +
-        ' KB — bem leve. A prévia no WhatsApp usa a logo fixa da Cláudio Auto Peças.';
+      const kb = link.length/1024;
+      const tam = kb < 1 ? 'menos de 1 KB' : Math.round(kb) + ' KB';
+      $('tamLink').textContent = 'Link de ' + (ultimoBoleto ? 'boleto' : 'Pix') + ' com ' + tam +
+        ' — bem leve. A prévia no WhatsApp usa a logo fixa da Cláudio Auto Peças.';
 
       const b = this;
       navigator.clipboard.writeText(link).then(function(){
