@@ -530,48 +530,30 @@
     <div class="entrega-info" id="entregaInfo" hidden></div>
   </div>
 
-  <div class="cartao-confianca">
-    <h3>Usamos seus dados de forma 100% segura para garantir a sua satisfação:</h3>
-    <ul class="lista-confianca">
-      <li>
-        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" fill="var(--ok)" fill-opacity="0.18"/><path d="M6 10.3l2.4 2.4L14.2 7" stroke="var(--ok)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Confirmar seu pagamento e organizar a entrega;</span>
-      </li>
-      <li>
-        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" fill="var(--ok)" fill-opacity="0.18"/><path d="M6 10.3l2.4 2.4L14.2 7" stroke="var(--ok)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Avisar quando a peça sair para entrega.</span>
-      </li>
-    </ul>
-    <div class="cartao-privacidade">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M8 10.5V7.5a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.4"/></svg>
-      <p>Seus dados não ficam guardados neste site. Eles servem apenas para a Cláudio Auto Peças identificar seu pagamento e organizar a entrega da sua peça.</p>
-    </div>
-  </div>
-
   <div class="etapas">
 
-    <!-- ETAPA 1 — dados do cliente -->
+    <!-- ETAPA 1 — só o essencial: nome e WhatsApp (endereço só quando é entrega) -->
     <section class="etapa cartao" id="etapa1">
       <h2><b>1</b> Seus dados</h2>
-      <p class="dica">Para a loja saber quem está pagando e separar sua peça.</p>
+      <p class="dica">Só pra loja saber de quem é o pagamento.</p>
 
       <div class="campo">
-        <label for="nome">Nome completo</label>
-        <input type="text" id="nome" autocomplete="name" placeholder="Seu nome completo">
-        <div class="msg-erro" id="erroNome">Preenche seu nome completo pra gente continuar.</div>
-      </div>
-      <div class="campo">
-        <label for="fone">WhatsApp</label>
-        <input type="tel" id="fone" autocomplete="tel" inputmode="numeric" placeholder="(18) 90000-0000" maxlength="15">
-        <div class="msg-erro" id="erroFone">Confere o número — parece incompleto.</div>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" autocomplete="name" autocapitalize="words" placeholder="Seu nome" enterkeyhint="next">
+        <div class="msg-erro" id="erroNome">Coloca seu nome pra gente continuar.</div>
       </div>
       <div class="campo" style="margin-bottom:0">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" autocomplete="email" placeholder="seuemail@exemplo.com">
-        <div class="msg-erro" id="erroEmail">Confere o e-mail — parece inválido.</div>
+        <label for="fone">WhatsApp</label>
+        <input type="tel" id="fone" autocomplete="tel" inputmode="numeric" placeholder="(18) 90000-0000" maxlength="15" enterkeyhint="go">
+        <div class="msg-erro" id="erroFone">Confere o número — parece incompleto.</div>
+      </div>
+      <div class="campo" id="campoEndereco" hidden style="margin:18px 0 0">
+        <label for="enderecoEntrega">Endereço de entrega</label>
+        <textarea id="enderecoEntrega" style="min-height:84px;font-family:'Instrument',system-ui,sans-serif;font-size:15px;line-height:1.5;word-break:normal;overflow-wrap:break-word" placeholder="Rua, número, bairro e cidade" maxlength="240" autocomplete="street-address"></textarea>
+        <div class="msg-erro" id="erroEndereco">Coloca o endereço pra gente saber onde entregar.</div>
       </div>
 
-      <button class="btn-principal" id="continuar1" style="margin-top:22px">Continuar</button>
+      <button class="btn-principal" id="continuar1" style="margin-top:22px">Ver QR Code e pagar</button>
     </section>
 
     <div class="resumo" id="resumo1" hidden>
@@ -582,88 +564,29 @@
       <button id="editar1">Editar</button>
     </div>
 
-    <!-- ETAPA 2 — endereço de entrega -->
-    <section class="etapa cartao" id="etapa2" hidden>
-      <h2><b>2</b> Endereço de entrega</h2>
-      <p class="dica">Preenche onde sua peça deve chegar.</p>
-
-      <div id="camposEndereco">
-      <div class="campo">
-        <label for="cep">CEP</label>
-        <input type="text" id="cep" inputmode="numeric" placeholder="00000-000" maxlength="9" autocomplete="postal-code">
-      </div>
-      <div class="cep-status" id="cepStatus"></div>
-
-      <div class="campo">
-        <label for="endereco">Endereço</label>
-        <input type="text" id="endereco" placeholder="Rua, avenida..." autocomplete="address-line1">
-      </div>
-
-      <div class="dupla campo">
-        <div>
-          <label for="numero">Número</label>
-          <input type="text" id="numero" inputmode="numeric" placeholder="123" autocomplete="off">
-        </div>
-        <div>
-          <label for="complemento">Complemento <span class="opc">opcional</span></label>
-          <input type="text" id="complemento" placeholder="Apto, bloco..." autocomplete="address-line2">
-        </div>
-      </div>
-
-      <div class="campo">
-        <label for="bairro">Bairro</label>
-        <input type="text" id="bairro" placeholder="Seu bairro" autocomplete="address-level3">
-      </div>
-
-      <div class="dupla campo">
-        <div>
-          <label for="cidade">Cidade</label>
-          <input type="text" id="cidade" placeholder="Presidente Prudente" autocomplete="address-level2">
-        </div>
-        <div style="max-width:110px">
-          <label for="estado">UF</label>
-          <input type="text" id="estado" placeholder="SP" maxlength="2" autocomplete="address-level1" style="text-transform:uppercase">
-        </div>
-      </div>
-
-      <div class="campo" style="margin-bottom:0">
-        <label for="referencia">Ponto de referência <span class="opc">opcional</span></label>
-        <textarea id="referencia" style="min-height:70px" placeholder="Ex: portão preto, perto do mercado..." maxlength="200"></textarea>
-      </div>
-
-      </div><!-- /camposEndereco -->
-
-      <div class="msg-erro" id="erroEndereco">Preenche os campos obrigatórios do endereço.</div>
-
-      <button class="btn-principal" id="continuar2" style="margin-top:22px">Continuar</button>
-    </section>
-
-    <div class="resumo" id="resumo2" hidden>
-      <div class="txt">
-        <b>✓</b>
-        <div class="info" id="resumo2Info"></div>
-      </div>
-      <button id="editar2">Editar</button>
-    </div>
-
-    <!-- ETAPA 3 — pagamento -->
+    <!-- ETAPA 2 — pagamento: QR na hora -->
     <section class="etapa cartao" id="etapa3" hidden>
-      <h2><b>3</b> Pagamento</h2>
-      <p class="dica">Abra o app do banco, escolha Pix, cole o código ou escaneie o QR Code.</p>
+      <h2><b>2</b> Pagamento</h2>
+      <p class="dica">Escaneie o QR Code no app do banco — ou copie o código e cole na área Pix.</p>
 
       <div id="pixCliente">
-        <div class="codigo" id="codigoPix"></div>
-        <button class="btn-principal" id="copiarCliente" style="width:100%">Copiar código de pagamento</button>
-
-        <div style="margin-top:24px" class="moldura"><canvas id="qrCliente" aria-label="QR Code do pagamento"></canvas></div>
+        <div class="moldura"><canvas id="qrCliente" aria-label="QR Code do pagamento"></canvas></div>
+        <button class="btn-principal" id="copiarCliente" style="width:100%;margin-top:20px">Copiar código Pix</button>
+        <div class="codigo" id="codigoPix" style="margin-top:14px"></div>
       </div>
 
       <div id="boletoCliente" hidden>
         <div class="barras"><canvas id="barrasCliente" aria-label="Código de barras do boleto"></canvas></div>
         <div class="linha-digitavel" id="linhaCliente"></div>
         <button class="btn-principal" id="copiarBoletoCliente" style="width:100%;margin-top:16px">Copiar linha digitável</button>
-        <button class="btn-principal" id="enviar" style="width:100%;margin-top:24px">Confirmar pagamento no WhatsApp</button>
       </div>
+
+      <div class="cartao-privacidade" style="margin-top:20px">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M8 10.5V7.5a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <p>O pagamento vai direto para a conta da loja. Antes de confirmar, o app do seu banco mostra quem está recebendo.</p>
+      </div>
+
+      <button class="btn-secundario" id="enviar" style="width:100%;margin-top:16px">Já paguei — avisar a loja</button>
     </section>
 
   </div>
@@ -2991,7 +2914,7 @@ window.qrcode = module.exports || window.qrcode;})();
   /* =================================================================
      CONFIGURAÇÃO — ajuste esta linha
      ================================================================= */
-  const WHATSAPP_LOJA = '5511956513806';   // 55 + DDD + número, só dígitos
+  const WHATSAPP_LOJA = '5518997492446';   // 55 + DDD + número, só dígitos
   /* ================================================================= */
 
   const $ = function(id){ return document.getElementById(id); };
@@ -3551,18 +3474,6 @@ window.qrcode = module.exports || window.qrcode;})();
 
     let entregaResumo = '';
 
-    // Retirada na loja: a etapa 2 deixa de ser "endereço de entrega" e vira
-    // a confirmação de onde buscar a peça.
-    if(ehRetirada){
-      $('camposEndereco').hidden = true;
-      const h = $('etapa2').querySelector('h2');
-      if(h) h.innerHTML = '<b>2</b> Retirada na loja';
-      const d = $('etapa2').querySelector('p.dica');
-      if(d) d.textContent = dados.entregaObs
-        ? dados.entregaObs
-        : 'Sua peça fica separada na loja. Confirme para ver o pagamento.';
-      $('continuar2').textContent = 'Confirmar e ir para o pagamento';
-    }
     if(dados.entregaObs || dados.entregaTipo){
       const info = $('entregaInfo');
       const rotulo = ENTREGA_LABEL[dados.entregaTipo] || 'Entrega';
@@ -3586,149 +3497,74 @@ window.qrcode = module.exports || window.qrcode;})();
     }
 
     /* ---------------- controle das fases ---------------- */
-    const etapa1 = $('etapa1'), etapa2 = $('etapa2'), etapa3 = $('etapa3');
-    const resumo1 = $('resumo1'), resumo2 = $('resumo2');
+    // Uma etapa só: nome + WhatsApp (e o endereço, só quando é entrega).
+    // Depois disso, o QR na hora.
+    const etapa1 = $('etapa1'), etapa3 = $('etapa3'), resumo1 = $('resumo1');
     let qrDesenhado = false;
-    let nomeCliente = '', foneCliente = '', emailCliente = '';
-    let enderecoResumo = '';
+    let nomeCliente = '', foneCliente = '', enderecoCliente = '';
+    const esc = function(v){ return String(v).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+    if(!ehRetirada) $('campoEndereco').hidden = false;
+    $('continuar1').textContent = ehBoleto ? 'Ver boleto e pagar' : 'Ver QR Code e pagar';
 
     function foneValido(v){ return v.replace(/\D/g,'').length >= 10; }
-    function emailValido(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
-    /* ---- etapa 1: dados pessoais ---- */
     $('fone').addEventListener('input', function(){
       let v=this.value.replace(/\D/g,'').slice(0,11);
       if(v.length>6) v=v.replace(/(\d{2})(\d{4,5})(\d{0,4})/,'($1) $2-$3');
       else if(v.length>2) v=v.replace(/(\d{2})(\d*)/,'($1) $2');
       this.value=v.replace(/-$/,'');
     });
+    // o aviso de erro some assim que a pessoa começa a corrigir
+    [['nome','erroNome'],['fone','erroFone'],['enderecoEntrega','erroEndereco']].forEach(function(par){
+      $(par[0]).addEventListener('input', function(){ this.classList.remove('erro'); $(par[1]).classList.remove('visivel'); });
+    });
+    // Enter no teclado do celular já avança
+    $('nome').addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); $('fone').focus(); } });
+    $('fone').addEventListener('keydown', function(e){
+      if(e.key==='Enter'){ e.preventDefault(); if(ehRetirada) $('continuar1').click(); else $('enderecoEntrega').focus(); }
+    });
 
     $('continuar1').addEventListener('click', function(){
       const nome = $('nome').value.trim();
       const fone = $('fone').value.trim();
-      const email = $('email').value.trim();
+      const end  = $('enderecoEntrega').value.trim();
       let ok = true;
 
-      $('nome').classList.remove('erro'); $('erroNome').classList.remove('visivel');
-      $('fone').classList.remove('erro'); $('erroFone').classList.remove('visivel');
-      $('email').classList.remove('erro'); $('erroEmail').classList.remove('visivel');
-
-      if(!nome){ $('nome').classList.add('erro'); $('erroNome').classList.add('visivel'); ok=false; }
+      [['nome','erroNome'],['fone','erroFone'],['enderecoEntrega','erroEndereco']].forEach(function(par){
+        $(par[0]).classList.remove('erro'); $(par[1]).classList.remove('visivel');
+      });
+      if(nome.length < 2){ $('nome').classList.add('erro'); $('erroNome').classList.add('visivel'); ok=false; }
       if(!foneValido(fone)){ $('fone').classList.add('erro'); $('erroFone').classList.add('visivel'); ok=false; }
-      if(!emailValido(email)){ $('email').classList.add('erro'); $('erroEmail').classList.add('visivel'); ok=false; }
+      if(!ehRetirada && end.length < 8){ $('enderecoEntrega').classList.add('erro'); $('erroEndereco').classList.add('visivel'); ok=false; }
       if(!ok) return;
 
-      nomeCliente = nome; foneCliente = fone; emailCliente = email;
-      resumo1.querySelector('#resumo1Info').innerHTML = nome + '<small>' + fone + ' · ' + email + '</small>';
-      etapa1.hidden = true; resumo1.hidden = false;
-      etapa2.hidden = false;
-      etapa2.scrollIntoView({behavior:'smooth', block:'start'});
-    });
+      nomeCliente = nome; foneCliente = fone; enderecoCliente = ehRetirada ? '' : end;
+      $('resumo1Info').innerHTML = esc(nome) + '<small>' + esc(fone) +
+        (enderecoCliente ? ' · ' + esc(enderecoCliente) : '') + '</small>';
 
-    $('editar1').addEventListener('click', function(){
-      etapa1.hidden = false; resumo1.hidden = true;
-      etapa2.hidden = true; resumo2.hidden = true; etapa3.hidden = true;
-      $('nome').value = nomeCliente; $('fone').value = foneCliente; $('email').value = emailCliente;
-      etapa1.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-
-    /* ---- etapa 2: endereço (com autopreenchimento por CEP) ---- */
-    const cepStatus = $('cepStatus');
-    $('cep').addEventListener('input', function(){
-      let v = this.value.replace(/\D/g,'').slice(0,8);
-      if(v.length > 5) v = v.replace(/(\d{5})(\d)/,'$1-$2');
-      this.value = v;
-      const digitos = v.replace(/\D/g,'');
-      if(digitos.length === 8) buscarCep(digitos);
-      else { cepStatus.className = 'cep-status'; cepStatus.textContent=''; }
-    });
-
-    function buscarCep(cep){
-      cepStatus.className = 'cep-status visivel';
-      cepStatus.textContent = 'Buscando endereço...';
-      fetch('https://viacep.com.br/ws/' + cep + '/json/')
-        .then(function(r){ return r.json(); })
-        .then(function(data){
-          if(data.erro){
-            cepStatus.className = 'cep-status visivel erro';
-            cepStatus.textContent = 'CEP não encontrado — preenche o endereço manualmente.';
-            return;
-          }
-          $('endereco').value = data.logradouro || $('endereco').value;
-          $('bairro').value = data.bairro || $('bairro').value;
-          $('cidade').value = data.localidade || $('cidade').value;
-          $('estado').value = (data.uf || $('estado').value).toUpperCase();
-          cepStatus.className = 'cep-status visivel ok';
-          cepStatus.textContent = 'Endereço encontrado. Confere e completa o número.';
-          if(data.logradouro) $('numero').focus();
-        })
-        .catch(function(){
-          cepStatus.className = 'cep-status visivel erro';
-          cepStatus.textContent = 'Não consegui buscar agora — preenche o endereço manualmente.';
-        });
-    }
-
-    $('continuar2').addEventListener('click', function(){
-      // Retirada na loja não tem para onde entregar: a etapa 2 vira confirmação,
-      // sem pedir CEP nem endereço (antes exigia os dois e travava o cliente).
-      if(ehRetirada){
-        enderecoResumo = 'Retirada na loja';
-        resumo2.querySelector('#resumo2Info').innerHTML =
-          'Retirada na loja' + (dados.entregaObs ? '<small>' + dados.entregaObs + '</small>' : '');
-        etapa2.hidden = true; resumo2.hidden = false;
-        etapa3.hidden = false;
-        if(!qrDesenhado && !ehBoleto){ desenhar($('qrCliente'), dados.payload); qrDesenhado = true; }
-        etapa3.scrollIntoView({behavior:'smooth', block:'start'});
-        return;
-      }
-      const cep = $('cep').value.trim();
-      const endereco = $('endereco').value.trim();
-      const numero = $('numero').value.trim();
-      const complemento = $('complemento').value.trim();
-      const bairro = $('bairro').value.trim();
-      const cidade = $('cidade').value.trim();
-      const estado = $('estado').value.trim().toUpperCase();
-      const referencia = $('referencia').value.trim();
-
-      const obrigatorios = [cep, endereco, numero, bairro, cidade, estado];
-      const ok = obrigatorios.every(function(v){ return v.length > 0; }) && cep.replace(/\D/g,'').length === 8;
-
-      $('erroEndereco').classList.toggle('visivel', !ok);
-      if(!ok) return;
-
-      enderecoResumo = endereco + ', ' + numero + (complemento ? ' - ' + complemento : '') +
-        ' — ' + bairro + ', ' + cidade + '/' + estado + ' — CEP ' + cep +
-        (referencia ? ' (ref: ' + referencia + ')' : '');
-
-      resumo2.querySelector('#resumo2Info').innerHTML = endereco + ', ' + numero +
-        '<small>' + bairro + ', ' + cidade + '/' + estado + ' — CEP ' + cep + '</small>';
-
-      etapa2.hidden = true; resumo2.hidden = false;
-      etapa3.hidden = false;
+      etapa1.hidden = true; resumo1.hidden = false; etapa3.hidden = false;
       if(!qrDesenhado && !ehBoleto){ desenhar($('qrCliente'), dados.payload); qrDesenhado = true; }
       etapa3.scrollIntoView({behavior:'smooth', block:'start'});
     });
 
-    $('editar2').addEventListener('click', function(){
-      etapa2.hidden = false; resumo2.hidden = true; etapa3.hidden = true;
-      etapa2.scrollIntoView({behavior:'smooth', block:'start'});
+    $('editar1').addEventListener('click', function(){
+      etapa1.hidden = false; resumo1.hidden = true; etapa3.hidden = true;
+      etapa1.scrollIntoView({behavior:'smooth', block:'start'});
     });
 
-    /* ---- etapa 3: pagamento ---- */
+    /* ---- pagamento ---- */
     $('enviar').addEventListener('click', function(){
       const linhas = [
-        'Olá! Paguei o boleto.','',
+        ehBoleto ? 'Olá, Cláudio Auto Peças! Paguei o boleto pelo site.' : 'Olá, Cláudio Auto Peças! Acabei de pagar o Pix pelo site.', '',
         'Nome: ' + nomeCliente,
         'WhatsApp: ' + foneCliente,
-        'E-mail: ' + emailCliente,
         'Peça: ' + (dados.titulo || 'não informada')
       ];
       if(valorFinal && !isNaN(parseFloat(valorFinal))) linhas.push('Valor: ' + moeda(valorFinal));
       if(bol && bol.ok) linhas.push('Boleto: ' + formataLinha(bol.linha));
-      if(entregaResumo) linhas.push('Forma de entrega combinada: ' + entregaResumo);
-      linhas.push('Endereço para entrega: ' + enderecoResumo);
-      linhas.push('', 'Aguardo a confirmação por aí.');
-
+      linhas.push(ehRetirada ? 'Vou retirar na loja.' : 'Entregar em: ' + enderecoCliente);
+      linhas.push('', 'Segue o comprovante.');
       window.open('https://wa.me/' + WHATSAPP_LOJA + '?text=' + encodeURIComponent(linhas.join('\n')), '_blank');
     });
 
@@ -3744,8 +3580,8 @@ window.qrcode = module.exports || window.qrcode;})();
     $('copiarCliente').addEventListener('click', function(){
       const b=this;
       navigator.clipboard.writeText(dados.payload).then(function(){
-        b.textContent='Código copiado';
-        setTimeout(function(){ b.textContent='Copiar código de pagamento'; },2000);
+        b.textContent='Código copiado — cole no app do banco';
+        setTimeout(function(){ b.textContent='Copiar código Pix'; },2400);
       });
     });
 
