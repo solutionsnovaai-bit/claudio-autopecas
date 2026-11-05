@@ -586,7 +586,6 @@
         <p>O pagamento vai direto para a conta da loja. Antes de confirmar, o app do seu banco mostra quem está recebendo.</p>
       </div>
 
-      <button class="btn-secundario" id="enviar" style="width:100%;margin-top:16px">Já paguei — avisar a loja</button>
     </section>
 
   </div>
@@ -3551,21 +3550,6 @@ window.qrcode = module.exports || window.qrcode;})();
     $('editar1').addEventListener('click', function(){
       etapa1.hidden = false; resumo1.hidden = true; etapa3.hidden = true;
       etapa1.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-
-    /* ---- pagamento ---- */
-    $('enviar').addEventListener('click', function(){
-      const linhas = [
-        ehBoleto ? 'Olá, Cláudio Auto Peças! Paguei o boleto pelo site.' : 'Olá, Cláudio Auto Peças! Acabei de pagar o Pix pelo site.', '',
-        'Nome: ' + nomeCliente,
-        'WhatsApp: ' + foneCliente,
-        'Peça: ' + (dados.titulo || 'não informada')
-      ];
-      if(valorFinal && !isNaN(parseFloat(valorFinal))) linhas.push('Valor: ' + moeda(valorFinal));
-      if(bol && bol.ok) linhas.push('Boleto: ' + formataLinha(bol.linha));
-      linhas.push(ehRetirada ? 'Vou retirar na loja.' : 'Entregar em: ' + enderecoCliente);
-      linhas.push('', 'Segue o comprovante.');
-      window.open('https://wa.me/' + WHATSAPP_LOJA + '?text=' + encodeURIComponent(linhas.join('\n')), '_blank');
     });
 
     $('copiarBoletoCliente').addEventListener('click', function(){
